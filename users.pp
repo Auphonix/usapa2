@@ -88,10 +88,12 @@ class userSetup{
     package { 'csh': # ensure csh shell is installed
     ensure => 'present',
     name => 'csh',
+    provider => 'yum',
     }
     package { 'bash': # ensure bash shell is installed
     ensure => 'present',
     name => 'bash',
+    provider => 'yum',
     }
 
 
