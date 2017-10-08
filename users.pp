@@ -1,5 +1,5 @@
 class user1{
-    user { 'becca'
+    user { 'becca':
     ensure => 'present',
 
     # Set her home directory
@@ -17,11 +17,11 @@ class user1{
     shell => '/bin/bash'
     }
 
-    group { 'sysadmin'
+    group { 'sysadmin':
     ensure => 'present',
     }
 
-    group { 'cars'
-    ensure => 'present'
+    group { 'cars':
+    ensure => 'present',
     }
 }
