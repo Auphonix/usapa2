@@ -2,7 +2,6 @@ class user1{
 
     # HASH FOR THE DEFAULT PASSWORD 'password'
     $def_hash = '$6$kq22ZJbo$m6uJHRzuBTYJA4tXasjjoml/M9zIco3ht9cNGJ0/x1QYuZQZz0zo2PgUWIxTDzuEh932cLsF.kjup3h1Rs/Gj.'
-
     # Users name
     $uname = 'becca'
 
@@ -42,14 +41,48 @@ class user1{
 }
 
 class user2{
-    file { '/home/fred':
+
+    # HASH FOR THE DEFAULT PASSWORD 'password'
+    $def_hash = '$6$kq22ZJbo$m6uJHRzuBTYJA4tXasjjoml/M9zIco3ht9cNGJ0/x1QYuZQZz0zo2PgUWIxTDzuEh932cLsF.kjup3h1Rs/Gj.'
+    # Users name
+    $uname = 'fred'
+
+    file { "/home/$uname":
     # Ensure fred's home directory is created
     ensure => 'directory',
     }
+
+    user { "$uname":
+    ensure => 'present',
+
+    # Home dir
+    home => "/home/$uname",
+
+    # Allow the user time to change their password
+    password => $def_hash, #encrypts with local encryption
+    password_min_age => '1',
+    password_max_age => '7',
+
+    # set UID
+    uid => '10027463',
+
+    # Set shell
+    shell => 'csh',
+    }
+
+    group { 'trucks':
+    ensure => 'present',
+    }
+
+    group { 'cars':
+    ensure => 'present',
+    }
 }
+
 
 # Main Class to run user setup
 class userSetup{
     # Run all users
     include 'user1'
+    include 'user2'
 }
