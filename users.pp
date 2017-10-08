@@ -15,7 +15,7 @@ class user1{
     groups => ['sysadmin', 'cars'],
 
     # Allow the user time to change their password
-    password => '!!',
+    password => 'password', #enctypts with local encryption
     password_min_age => '1',
     password_max_age => '7',
 
