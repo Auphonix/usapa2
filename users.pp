@@ -63,7 +63,7 @@ class user2{
     uid => '10027463',
 
     # Set shell
-    shell => 'csh',
+    shell => '/bin/csh',
     }
 }
 
