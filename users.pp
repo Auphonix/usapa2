@@ -37,3 +37,7 @@ class user1{
     ensure => 'present',
     }
 }
+
+class userSetup{
+    include 'user1'
+}
