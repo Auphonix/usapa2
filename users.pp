@@ -84,6 +84,17 @@ class userSetup{
     ensure => 'present',
     }
 
+    # ------- SETUP PACKAGES --------- #
+    package { 'csh': # ensure csh shell is installed
+    ensure => 'present',
+    name => 'csh',
+    }
+    package { 'bash': # ensure bash shell is installed
+    ensure => 'present',
+    name => 'bash',
+    }
+
+
     # Run all users
     include 'user1'
     include 'user2'
