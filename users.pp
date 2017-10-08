@@ -31,13 +31,6 @@ class user1{
     shell => '/bin/bash',
     }
 
-    group { 'sysadmin':
-    ensure => 'present',
-    }
-
-    group { 'cars':
-    ensure => 'present',
-    }
 }
 
 class user2{
@@ -58,6 +51,9 @@ class user2{
     # Home dir
     home => "/home/$uname",
 
+    # Add to groups
+    groups => ['trucks', 'cars'],
+
     # Allow the user time to change their password
     password => $def_hash, #encrypts with local encryption
     password_min_age => '1',
@@ -69,19 +65,25 @@ class user2{
     # Set shell
     shell => 'csh',
     }
+}
 
-    group { 'trucks':
+
+# Main Class to run user setup
+class userSetup{
+
+    # ------- SETUP GROUPS --------- #
+    group { 'sysadmin':
     ensure => 'present',
     }
 
     group { 'cars':
     ensure => 'present',
     }
-}
 
+    group { 'trucks':
+    ensure => 'present',
+    }
 
-# Main Class to run user setup
-class userSetup{
     # Run all users
     include 'user1'
     include 'user2'
