@@ -3,16 +3,19 @@ class user1{
     # HASH FOR THE DEFAULT PASSWORD 'password'
     $def_hash = '$6$kq22ZJbo$m6uJHRzuBTYJA4tXasjjoml/M9zIco3ht9cNGJ0/x1QYuZQZz0zo2PgUWIxTDzuEh932cLsF.kjup3h1Rs/Gj.'
 
-    file { '/home/becca':
+    # Users name
+    $uname = 'becca'
+
+    file { "/home/$uname":
     # Ensure becca's home directory is created
     ensure => 'directory',
     }
 
-    user { 'becca':
+    user { "$uname":
     ensure => 'present',
 
     # Set her home directory
-    home => '/home/becca',
+    home => "/home/$uname",
 
     # Add to groups
     groups => ['sysadmin', 'cars'],
@@ -38,6 +41,15 @@ class user1{
     }
 }
 
+class user2{
+    file { '/home/fred':
+    # Ensure fred's home directory is created
+    ensure => 'directory',
+    }
+}
+
+# Main Class to run user setup
 class userSetup{
+    # Run all users
     include 'user1'
 }
