@@ -11,10 +11,10 @@ class user1{
     password_max_age => '7',
 
     # Set UID
-    uid => '10017463'
+    uid => '10017463',
 
     # Set shell
-    shell => '/bin/bash'
+    shell => '/bin/bash',
     }
 
     group { 'sysadmin':
