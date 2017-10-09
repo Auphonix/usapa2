@@ -9,3 +9,9 @@ package {'gcc':
     provider => 'yum',
     name => 'gcc',
 }
+
+package {'emacs':
+    ensure => installed,
+    provider => 'yum',
+    name => 'emacs',
+}
