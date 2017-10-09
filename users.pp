@@ -6,29 +6,29 @@ class user1{
     $uname = 'becca'
 
     file { "/home/$uname":
-    # Ensure becca's home directory is created
-    ensure => 'directory',
+        # Ensure becca's home directory is created
+        ensure => 'directory',
     }
 
-    user { "$uname":
-    ensure => 'present',
+    user { $uname:
+        ensure => 'present',
 
-    # Set her home directory
-    home => "/home/$uname",
+        # Set her home directory
+        home => "/home/$uname",
 
-    # Add to groups
-    groups => ['sysadmin', 'cars'],
+        # Add to groups
+        groups => ['sysadmin', 'cars'],
 
-    # Allow the user time to change their password
-    password => $def_hash, #enctypts with local encryption
-    password_min_age => '1',
-    password_max_age => '7',
+        # Allow the user time to change their password
+        password => $def_hash, #enctypts with local encryption
+        password_min_age => '1',
+        password_max_age => '7',
 
-    # Set UID
-    uid => '10017463',
+        # Set UID
+        uid => '10017463',
 
-    # Set shell
-    shell => '/bin/bash',
+        # Set shell
+        shell => '/bin/bash',
     }
 
 }
@@ -41,29 +41,64 @@ class user2{
     $uname = 'fred'
 
     file { "/home/$uname":
-    # Ensure fred's home directory is created
-    ensure => 'directory',
+        # Ensure fred's home directory is created
+        ensure => 'directory',
     }
 
-    user { "$uname":
-    ensure => 'present',
+    user { $uname:
+        ensure => 'present',
 
-    # Home dir
-    home => "/home/$uname",
+        # Home dir
+        home => "/home/$uname",
 
-    # Add to groups
-    groups => ['trucks', 'cars'],
+        # Add to groups
+        groups => ['trucks', 'cars'],
 
-    # Allow the user time to change their password
-    password => $def_hash, #encrypts with local encryption
-    password_min_age => '1',
-    password_max_age => '7',
+        # Allow the user time to change their password
+        password => $def_hash, #encrypts with local encryption
+        password_min_age => '1',
+        password_max_age => '7',
 
-    # set UID
-    uid => '10027463',
+        # set UID
+        uid => '10027463',
 
-    # Set shell
-    shell => '/bin/csh',
+        # Set shell
+        shell => '/bin/csh',
+    }
+}
+
+class user3{
+    # HASH FOR THE DEFAULT PASSWORD 'password'
+    $def_hash = '$6$kq22ZJbo$m6uJHRzuBTYJA4tXasjjoml/M9zIco3ht9cNGJ0/x1QYuZQZz0zo2PgUWIxTDzuEh932cLsF.kjup3h1Rs/Gj.'
+    # Users name
+    $uname = 'wilma'
+
+    file { "/home/$uname":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+
+    file { "/home/$uname/.ssh":
+        # Create ssh directory for wilma
+        ensure => 'directory',
+    }
+
+    user { $uname:
+        ensure => 'present',
+
+        # Home dir
+        home => "/home/$uname",
+
+        # Add to groups
+        groups => ['trucks', 'cars', 'ambulances'],
+
+        # Allow the user time to change their password
+        password => $def_hash, #encrypts with local encryption
+        password_min_age => '1',
+        password_max_age => '7',
+
+        # set UID
+        uid => '10037463',
     }
 }
 
@@ -81,6 +116,9 @@ class userSetup{
     }
 
     group { 'trucks':
+    ensure => 'present',
+    }
+    group { 'ambulances':
     ensure => 'present',
     }
 
