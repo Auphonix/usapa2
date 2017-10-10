@@ -32,10 +32,10 @@ class mysql_setup {
     source => 'https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm',
     }
 
-    package {'mariadb-server':
+    package {'mysql-server':
         ensure => installed,
         provider => 'yum',
-        name => 'mariadb-server',
+        name => 'mysql',
     }
 
     package {'mysql':
