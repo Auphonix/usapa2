@@ -25,6 +25,13 @@ class httpd_setup{
 
 # Setup mysql on redhat
 class mysql_setup {
+
+    package {'mysql-rpm':
+    ensure => installed,
+    provider => rpm,
+    source => 'https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm',
+    }
+
     package {'mariadb-server':
         ensure => installed,
         provider => 'yum',
@@ -83,6 +90,27 @@ class vnc_setup {
     }
 }
 
+class sshfs_setup {
+    package {'fuse':
+        ensure => installed,
+        provider => 'yum',
+        name => 'fuse',
+    }
+
+    package {'fuse-devel':
+        ensure => installed,
+        provider => 'yum',
+        name => 'fuse-devel',
+    }
+
+    package {'fuse-sshfs':
+        ensure => installed,
+        source => 'ftp://195.220.108.108/linux/fedora/linux/releases/26/Everything/x86_64/os/Packages/f/fuse-sshfs-2.8-2.fc26.x86_64.rpm',
+        provider => 'rpm',
+        name => 'fuse-sshfs',
+    }
+}
+
 class static_package_setup{
     package {'openssh':
         ensure => installed,
@@ -132,25 +160,6 @@ class static_package_setup{
         provider => 'yum',
         name => 'emacs',
     }
-
-    package {'fuse':
-        ensure => installed,
-        provider => 'yum',
-        name => 'fuse',
-    }
-
-    package {'fuse-devel':
-        ensure => installed,
-        provider => 'yum',
-        name => 'fuse-devel',
-    }
-
-    package {'fuse-sshfs':
-        ensure => installed,
-        source => 'ftp://195.220.108.108/linux/fedora/linux/releases/26/Everything/x86_64/os/Packages/f/fuse-sshfs-2.8-2.fc26.x86_64.rpm',
-        provider => 'rpm',
-        name => 'fuse-sshfs',
-    }
 }
 
 class package_install{
@@ -158,5 +167,6 @@ class package_install{
     include 'httpd_setup'
     include 'mysql_setup'
     include 'vnc_setup'
+    include 'sshfs_setup'
     include 'static_package_setup'
 }
