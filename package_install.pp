@@ -116,7 +116,7 @@ class static_package_setup{
 
     package {'cgdb':
         ensure => installed,
-        source => 'http://dl.fedoraproject.org/pub/epel/7/x86_64/c/cgdb-0.6.8-1.el7.x86_64.rpm'
+        source => 'http://dl.fedoraproject.org/pub/epel/7/x86_64/c/cgdb-0.6.8-1.el7.x86_64.rpm',
         provider => 'rpm',
         name => 'cgdb',
     }
