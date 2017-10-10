@@ -114,11 +114,11 @@ class static_package_setup{
         name => 'gdb',
     }
 
-    package {'cgdb':
-        ensure => installed,
-        provider => 'yum',
-        name => 'cgdb',
-    }
+    # package {'cgdb':
+    #     ensure => installed,
+    #     provider => 'yum',
+    #     name => 'cgdb',
+    # }
 
     package {'vim':
         ensure => installed,
@@ -132,10 +132,10 @@ class static_package_setup{
         name => 'emacs',
     }
 
-    package {'sshfs':
+    package {'fuse-sshfs':
         ensure => installed,
         provider => 'yum',
-        name => 'sshfs',
+        name => 'fuse-sshfs',
     }
 }
 
