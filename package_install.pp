@@ -139,6 +139,12 @@ class static_package_setup{
         name => 'fuse',
     }
 
+    package {'fuse-devel':
+        ensure => installed,
+        provider => 'yum',
+        name => 'fuse-devel',
+    }
+
     package {'fuse-sshfs':
         ensure => installed,
         source => 'ftp://195.220.108.108/linux/fedora/linux/releases/26/Everything/x86_64/os/Packages/f/fuse-sshfs-2.8-2.fc26.x86_64.rpm',
