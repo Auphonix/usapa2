@@ -134,9 +134,9 @@ class static_package_setup{
     }
 
     package {'fuse':
-    ensure => installed,
-    provider => 'yum',
-    name => 'fuse',
+        ensure => installed,
+        provider => 'yum',
+        name => 'fuse',
     }
 
     package {'fuse-sshfs':
