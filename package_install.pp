@@ -16,7 +16,7 @@ class httpd_setup{
 }
 
 # Setup mysql on redhat
-class Mysql_setup {
+class mysql_setup {
     package {'mariadb-server':
         ensure => installed,
         provider => 'yum',
