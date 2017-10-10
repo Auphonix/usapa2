@@ -23,12 +23,6 @@ class mysql_setup {
         name => 'mariadb-server',
     }
 
-    package {'mariadb':
-        ensure => installed,
-        provider => 'yum',
-        name => 'mariadb-server',
-    }
-
     package {'mysql':
         ensure => installed,
         provider => 'yum',
