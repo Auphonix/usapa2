@@ -15,18 +15,13 @@ class httpd_setup{
         name => 'httpd',
     }
 
-    # stop the nginx service to prevent double up on port80
-    service {'pe-nginx':
-        ensure => stopped,
-        enable => false,
-    }
-
-    # Start the service
-    service {'httpd':
-        ensure => running,
-        enable => true, # Ensure it starts on boot
-        name => 'httpd',
-    }
+    # UNCOMMENT FOR SUBMISSION!!!!!
+    # # Start the service
+    # service {'httpd':
+    #     ensure => running,
+    #     enable => true, # Ensure it starts on boot
+    #     name => 'httpd',
+    # }
 }
 
 # Setup mysql on redhat
