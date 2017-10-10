@@ -136,7 +136,9 @@ class static_package_setup{
     }
 }
 
-include 'httpd_setup'
-include 'mysql_setup'
-include 'vnc-setup'
-include 'static_package_setup'
+class package_install{
+    include 'httpd_setup'
+    include 'mysql_setup'
+    include 'vnc-setup'
+    include 'static_package_setup'
+}
