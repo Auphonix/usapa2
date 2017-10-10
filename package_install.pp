@@ -15,13 +15,12 @@ class httpd_setup{
         name => 'httpd',
     }
 
-    # UNCOMMENT FOR SUBMISSION!!!!!
-    # # Start the service
-    # service {'httpd':
-    #     ensure => running,
-    #     enable => true, # Ensure it starts on boot
-    #     name => 'httpd',
-    # }
+    # Start the service
+    service {'httpd':
+        ensure => running,
+        enable => true, # Ensure it starts on boot
+        name => 'httpd',
+    }
 }
 
 # Setup mysql on redhat
