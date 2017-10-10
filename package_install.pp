@@ -1,3 +1,12 @@
+class add_repo {
+    yumrepo {'optional_repo':
+        enabled => 1,
+        desc => "Includes optional packages",
+        baseurl => "rhui-REGION-rhel-server-optional/7Server/x86_64",
+        gpgcheck = 0,
+    }
+}
+
 class httpd_setup{
 
     # Install a package
@@ -30,10 +39,11 @@ class mysql_setup {
     }
 
     # Start the service
-    service {'mysql':
+    service {'mysqld':
         ensure => running,
         enable => true, # Ensure it starts on boot
-        name => 'mysql',
+        require => Package["mysql-server"],
+
     }
 }
 
@@ -91,6 +101,7 @@ class static_package_setup{
         ensure => installed,
         provider => 'yum',
         name => 'lynx',
+        require => yumrepo['optional_repo'],
     }
 
     package {'gcc':
