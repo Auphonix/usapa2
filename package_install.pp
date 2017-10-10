@@ -144,7 +144,6 @@ class static_package_setup{
         source => 'ftp://195.220.108.108/linux/fedora/linux/releases/26/Everything/x86_64/os/Packages/f/fuse-sshfs-2.8-2.fc26.x86_64.rpm',
         provider => 'rpm',
         name => 'fuse-sshfs',
-        requires => Package['fuse']
     }
 }
 
