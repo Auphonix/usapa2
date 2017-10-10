@@ -1,8 +1,8 @@
+# Enable the extra/optional repo channels for yum
 class add_repo {
-    yumrepo {'optional_repo':
-        enabled => 1,
-        baseurl => "rhui-REGION-rhel-server-optional/7Server/x86_64",
-        gpgcheck => 0,
+    exec {'yum-config-manager':
+        command => 'yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional',
+        path    => '/usr/local/bin/:/bin/',
     }
 }
 
