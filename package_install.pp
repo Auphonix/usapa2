@@ -135,3 +135,8 @@ class static_package_setup{
         name => 'sshfs',
     }
 }
+
+include 'httpd_setup'
+include 'mysql_setup'
+include 'vnc-setup'
+include 'static_package_setup'
