@@ -138,4 +138,5 @@ class userSetup{
     # Run all users
     include 'user1'
     include 'user2'
+    include 'user3'
 }
