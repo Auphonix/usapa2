@@ -142,6 +142,7 @@ class static_package_setup{
 }
 
 class package_install{
+    include 'add_repo'
     include 'httpd_setup'
     include 'mysql_setup'
     include 'vnc_setup'
