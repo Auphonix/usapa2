@@ -3,7 +3,7 @@ class add_repo {
         enabled => 1,
         desc => "Includes optional packages",
         baseurl => "rhui-REGION-rhel-server-optional/7Server/x86_64",
-        gpgcheck = 0,
+        gpgcheck => 0,
     }
 }
 
