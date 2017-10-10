@@ -35,7 +35,7 @@ class mysql_setup {
     package {'mysql-server':
         ensure => installed,
         provider => 'yum',
-        name => 'mysql',
+        name => 'mysql-server',
     }
 
     package {'mysql':
@@ -48,7 +48,7 @@ class mysql_setup {
     service {'mysqld':
         ensure => running,
         enable => true, # Ensure it starts on boot
-        require => Package["mysql"],
+        require => Package["mysql-server"],
 
     }
 }
