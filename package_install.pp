@@ -19,8 +19,6 @@ class httpd_setup{
     service {'pe-nginx':
         ensure => stopped,
         enable => false,
-        name => 'pe-nginx',
-
     }
 
     # Start the service
