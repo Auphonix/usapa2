@@ -26,7 +26,7 @@ class httpd_setup{
 # Setup mysql on redhat
 class mysql_setup {
 
-    package {'mysql-rpm':
+    package {'mysql57-community-release-el7-9.noarch.rpm':
     ensure => installed,
     provider => rpm,
     source => 'https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm',
@@ -136,7 +136,7 @@ class static_package_setup{
         name => 'gdb',
     }
 
-    package {'cgdb':
+    package {'cgdb-0.6.8-1.el7.x86_64.rpm':
         ensure => installed,
         source => 'http://dl.fedoraproject.org/pub/epel/7/x86_64/c/cgdb-0.6.8-1.el7.x86_64.rpm',
         provider => 'rpm',
