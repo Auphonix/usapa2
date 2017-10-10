@@ -41,7 +41,7 @@ class mysql_setup {
     service {'mysqld':
         ensure => running,
         enable => true, # Ensure it starts on boot
-        require => Package["mysql-server"],
+        require => Package["mysql"],
 
     }
 }
