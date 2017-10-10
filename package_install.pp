@@ -100,7 +100,6 @@ class static_package_setup{
         ensure => installed,
         provider => 'yum',
         name => 'lynx',
-        require => Yumrepo['optional_repo'],
     }
 
     package {'gcc':
