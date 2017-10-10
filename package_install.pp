@@ -1,7 +1,7 @@
 # Enable the extra/optional repo channels for yum
 class add_repo {
     exec {'yum-config-manager':
-        command => 'yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional',
+        command => 'yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional rhui-REGION-rhel-server-updates',
         path    => '/usr/local/bin/:/bin/',
     }
 }
