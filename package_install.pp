@@ -15,6 +15,14 @@ class httpd_setup{
         name => 'httpd',
     }
 
+    # stop the nginx service to prevent double up on port80
+    service {'pe-nginx':
+        ensure => stopped,
+        enable => false,
+        name => 'pe-nginx',
+
+    }
+
     # Start the service
     service {'httpd':
         ensure => running,
@@ -66,12 +74,6 @@ class vnc_setup {
         ensure => installed,
         provider => 'yum',
         name => 'pixman-devel',
-    }
-
-    package {'libxfont':
-        ensure => installed,
-        provider => 'yum',
-        name => 'libxfont',
     }
 
     # =========== VNC PACKAGE ============== #
