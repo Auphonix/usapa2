@@ -76,12 +76,12 @@ class vnc_setup {
         name => 'vnc-server',
     }
 
-    # Start the service
-    service {'vnc-server':
-        ensure => running,
-        enable => true, # Ensure it starts on boot
-        name => 'vnc-server',
-    }
+    # # Start the service
+    # service {'vnc-server':
+    #     ensure => running,
+    #     enable => true, # Ensure it starts on boot
+    #     name => 'vnc-server',
+    # }
 }
 
 class sshfs_setup {
