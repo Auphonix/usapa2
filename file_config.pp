@@ -12,7 +12,7 @@ class httpd_root_config{
     #   ],
     # }
     file {'/etc/httpd/conf/httpd.conf':
-        source => 'puppet:///manifests/conf_files/httpd_conf',
+        source => 'puppet:///manifests/conf_files/httpd.conf',
     }
 
 }
