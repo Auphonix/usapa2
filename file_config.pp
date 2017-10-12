@@ -46,11 +46,7 @@ class setup_user_bin{
     # Create directory for all users
     class { 'setup_usr_bin_helper':
             usr => $user1,
-    }
-    class { 'setup_usr_bin_helper':
             usr => $user2,
-    }
-    class { 'setup_usr_bin_helper':
             usr => $user3,
     }
 }
