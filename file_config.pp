@@ -21,6 +21,21 @@ class httpd_root_config{
 
 }
 
+class setup_usr_bin_helper (String $usr){
+    file { "/home/$usr/usr":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/$usr/usr/local":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/$usr/usr/local/bin":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+}
+
 
 # Add /usr/local/bin to everyone's directory
 class setup_user_bin{
@@ -28,20 +43,7 @@ class setup_user_bin{
     $user2='fred'
     $user3='wilma'
 
-    file { "/home/$user1/usr/local/bin":
-        # Ensure wilma's home directory is created
-        ensure => 'directory',
-    }
-
-    file { "/home/$user2/usr/local/bin":
-        # Ensure wilma's home directory is created
-        ensure => 'directory',
-    }
-
-    file { "/home/$user3/usr/local/bin":
-        # Ensure wilma's home directory is created
-        ensure => 'directory',
-    }
+    include 'setup_usr_bin_helper($user1)',
 }
 
 class file_config{
