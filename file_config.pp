@@ -28,45 +28,42 @@ class setup_user_bin{
     $user2='fred'
     $user3='wilma'
 
-    $usr = $user1
     # Create directory for all users
-    file { "/home/$usr/usr":
+    file { "/home/$user1/usr":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
-    file { "/home/$usr/usr/local":
+    file { "/home/$user1/usr/local":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
-    file { "/home/$usr/usr/local/bin":
-        # Ensure wilma's home directory is created
-        ensure => 'directory',
-    }
-
-    $usr = $user2
-    file { "/home/$usr/usr":
-        # Ensure wilma's home directory is created
-        ensure => 'directory',
-    }
-    file { "/home/$usr/usr/local":
-        # Ensure wilma's home directory is created
-        ensure => 'directory',
-    }
-    file { "/home/$usr/usr/local/bin":
+    file { "/home/$user1/usr/local/bin":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
 
-    $usr = $user3
-    file { "/home/$usr/usr":
+    file { "/home/$user2/usr":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
-    file { "/home/$usr/usr/local":
+    file { "/home/$user2/usr/local":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
-    file { "/home/$usr/usr/local/bin":
+    file { "/home/$user2/usr/local/bin":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+
+    file { "/home/$user3/usr":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/$user3/usr/local":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/$user3/usr/local/bin":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
