@@ -8,8 +8,7 @@ class httpd_root_config{
     augeas { "httpd_conf":
       context => "/files/etc/httpd/conf/httpd.conf",
       changes => [
-        'set directive[.="DocumentRoot"] "/var/www/s3547463"',
-        "set directive[.='DocumentRoot']/arg '${controller_name}'",
+        'set "DocumentRoot" "/var/www/s3547463"',
       ],
     }
 
