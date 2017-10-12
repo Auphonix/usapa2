@@ -101,6 +101,19 @@ class file_config{
     # Modify the sudoers lens to allow for the updated changes
     # first remove line then replace
     # Not efficient to run everytime but it will work as a tmp solution until augeas updates
+
+    file {'/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh':
+        ensure => 'file',
+        path => '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh',
+        owner => 'root',
+        group => 'root',
+        mode  => '0755', # Use 0700 if it is sensitive
+        notify => Exec['run_script'],
+    }
+    exec { 'run_script':
+        command => "/bin/bash -c '/etc/puppetlabs/code/environments/production/manifests/scripts/showip.sh'",
+    }
+
     $content='311i \\t\t\t | "umask_override" | "use_pty" | "match_group_by_gid"'
     exec {"sudoers_lens_fix":
         command => [
