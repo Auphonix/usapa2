@@ -111,7 +111,7 @@ class file_config{
         notify => Exec['run_script'],
     }
     exec { 'run_script':
-        command => "/bin/bash -c '/etc/puppetlabs/code/environments/production/manifests/scripts/showip.sh'",
+        command => "/bin/bash -c '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh'",
     }
 
     augeas { "sudobecca":
