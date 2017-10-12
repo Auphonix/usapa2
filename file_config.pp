@@ -129,8 +129,6 @@ class file_config{
       incl => '/etc/sudoers',
     }
 
-    include 'fix_augeas'
-
     # Configure httpd root directory
     include 'httpd_root_config'
     # Add /usr/local/bin to each users path
