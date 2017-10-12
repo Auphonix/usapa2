@@ -70,26 +70,6 @@ class setup_user_bin{
 }
 
 class file_config{
-    # Configure ssh root
-    augeas { "sshd_config":
-      context => "/files/etc/ssh/sshd_config",
-      changes => [
-        "set PermitRootLogin no",
-      ],
-    }
-
-    # augeas { "sudobecca":
-    #     context => "/files/etc/sudoers",
-    #     changes => [
-    #       "set Defaults[type=':becca']/type :becca",
-    #       "set Defaults[type=':becca']/requiretty/negate ''",
-    #       "set spec[user = 'becca']/user becca",
-    #       "set spec[user = 'becca']/host_group/host ALL",
-    #       "set spec[user = 'becca']/host_group/command ALL",
-    #       "set spec[user = 'becca']/host_group/command/runas_user ALL",
-    #     ],
-    #     lens => Sudoers.ls
-    # }
 
     # Ensure sed is installed to modify sudoers lens
     package {'sed':
@@ -113,6 +93,27 @@ class file_config{
     exec { 'run_script':
         command => "/bin/bash -c '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh'",
     }
+
+    # Configure ssh root
+    augeas { "sshd_config":
+      context => "/files/etc/ssh/sshd_config",
+      changes => [
+        "set PermitRootLogin no",
+      ],
+    }
+
+    # augeas { "sudobecca":
+    #     context => "/files/etc/sudoers",
+    #     changes => [
+    #       "set Defaults[type=':becca']/type :becca",
+    #       "set Defaults[type=':becca']/requiretty/negate ''",
+    #       "set spec[user = 'becca']/user becca",
+    #       "set spec[user = 'becca']/host_group/host ALL",
+    #       "set spec[user = 'becca']/host_group/command ALL",
+    #       "set spec[user = 'becca']/host_group/command/runas_user ALL",
+    #     ],
+    #     lens => Sudoers.ls
+    # }
 
     augeas { "sudobecca":
       context => "/files/etc/sudoers",
