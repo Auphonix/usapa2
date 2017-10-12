@@ -53,12 +53,16 @@ class file_config{
       ],
     }
 
-    augeas {"sudoers config":
-        context => "/files/etc/sudoers",
-        changes => [
-            "set becca 'ALL=(ALL)       ALL'",
-        ]
-    }
+    augeas { "sudobecca":
+    context =&gt; "/files/etc/sudoers",
+    changes =&gt; [
+        "set spec[user = 'becca']/user fred",
+        "set spec[user = 'becca']/host_group/host ALL",
+        "set spec[user = 'becca']/host_group/command SERVICES",
+        "set spec[user = 'becca']/host_group/command/runas_user root",
+        "set spec[user = 'becca']/host_group/command/tag NOPASSWD",
+    ],
+}
 
 
     # Configure httpd root directory
