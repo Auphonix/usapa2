@@ -21,7 +21,7 @@ class httpd_root_config{
 
 }
 
-class setup_usr_bin_helper (String $usr){
+class setup_usr_bin_helper ($usr){
     file { "/home/$usr/usr":
         # Ensure wilma's home directory is created
         ensure => 'directory',
@@ -43,7 +43,9 @@ class setup_user_bin{
     $user2='fred'
     $user3='wilma'
 
-    include 'setup_usr_bin_helper($user1)',
+    class { 'setup_usr_bin_helper':
+            usr => $user1,
+    }
 }
 
 class file_config{
