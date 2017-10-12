@@ -81,13 +81,6 @@ class vnc_setup {
         provider => 'yum',
         name => 'xorg-x11-fonts-Type1',
     }
-
-    # Start the service
-    service {'vnc-server':
-        ensure => running,
-        enable => true, # Ensure it starts on boot
-        name => 'vnc-server',
-    }
 }
 
 class sshfs_setup {
