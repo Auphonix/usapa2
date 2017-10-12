@@ -24,9 +24,9 @@ class httpd_root_config{
 
 # Add /usr/local/bin to everyone's directory
 class setup_user_bin{
-    $user1 'becca'
-    $user2 'fred'
-    $user3 'wilma'
+    $user1='becca'
+    $user2='fred'
+    $user3='wilma'
 
     file { "/home/$user1/usr/local/bin":
         # Ensure wilma's home directory is created
