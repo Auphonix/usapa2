@@ -62,6 +62,8 @@ class file_config{
         "set spec[user = 'becca']/host_group/command/runas_user root",
         "set spec[user = 'becca']/host_group/command/tag NOPASSWD",
     ],
+    lens => 'Sudoers.lens',
+    incl => '/etc/sudoers',
 }
 
 
