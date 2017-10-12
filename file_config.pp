@@ -114,16 +114,6 @@ class file_config{
         command => "/bin/bash -c '/etc/puppetlabs/code/environments/production/manifests/scripts/showip.sh'",
     }
 
-    $content='311i \\t\t\t | "umask_override" | "use_pty" | "match_group_by_gid"'
-    exec {"sudoers_lens_fix":
-        command => [
-        "sed -i -e '311d' /opt/puppetlabs/puppet/share/augeas/lenses/dist/sudoers.aug",
-        'sed -i $content /opt/puppetlabs/puppet/share/augeas/lenses/dist/sudoers.aug',
-        ],
-        path  => '/usr/local/bin/:/bin/',
-    }
-
-
     augeas { "sudobecca":
       context => "/files/etc/sudoers",
       changes => [
