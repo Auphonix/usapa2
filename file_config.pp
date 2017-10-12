@@ -6,7 +6,7 @@ class httpd_root_config{
     }
 
     augeas { "httpd_conf":
-      context => "/etc/httpd/conf/httpd.conf",
+      context => "/files/etc/httpd/conf/httpd.conf",
       changes => [
         'set directive[.="DocumentRoot"] "/var/www/s3547463"',
       ],
