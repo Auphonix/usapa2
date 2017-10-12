@@ -21,7 +21,15 @@ class httpd_root_config{
 
 }
 
-class setup_usr_bin_helper ($usr){
+
+# Add /usr/local/bin to everyone's directory
+class setup_user_bin{
+    $user1='becca'
+    $user2='fred'
+    $user3='wilma'
+
+    $usr = $user1
+    # Create directory for all users
     file { "/home/$usr/usr":
         # Ensure wilma's home directory is created
         ensure => 'directory',
@@ -34,20 +42,33 @@ class setup_usr_bin_helper ($usr){
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
-}
 
+    $usr = $user2
+    file { "/home/$usr/usr":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/$usr/usr/local":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/$usr/usr/local/bin":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
 
-# Add /usr/local/bin to everyone's directory
-class setup_user_bin{
-    $user1='becca'
-    $user2='fred'
-    $user3='wilma'
-
-    # Create directory for all users
-    class { 'setup_usr_bin_helper':
-            usr => $user1,
-            usr => $user2,
-            usr => $user3,
+    $usr = $user3
+    file { "/home/$usr/usr":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/$usr/usr/local":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/$usr/usr/local/bin":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
     }
 }
 
