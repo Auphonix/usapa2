@@ -79,7 +79,7 @@ class vnc_setup {
     package {'xorg-x11-fonts-Type1':
         ensure => installed,
         provider => 'yum',
-        name => 'vnc-server',
+        name => 'xorg-x11-fonts-Type1',
     }
 
     # Start the service
