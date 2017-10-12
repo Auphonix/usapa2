@@ -11,7 +11,7 @@ class httpd_root_config{
     #     'defnode DocumentRoot DocumentRoot /var/www/s3547463',
     #   ],
     # }
-    file {'/etc/httpd/conf/httpd.conf',
+    file {'/etc/httpd/conf/httpd.conf':
         source => 'puppet:///manifests/conf_files/http_conf',
     }
 
