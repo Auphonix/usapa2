@@ -1,3 +1,28 @@
+class fix_augeas{
+    # Ensure sed is installed to modify sudoers lens
+    package {'sed':
+        ensure => installed,
+        provider => 'yum',
+        name => 'sed',
+    }
+
+    # Modify the sudoers lens to allow for the updated changes
+    # first remove line then replace
+    # Not efficient to run everytime but it will work as a tmp solution until augeas updates
+
+    file {'/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh':
+        ensure => 'file',
+        path => '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh',
+        owner => 'root',
+        group => 'root',
+        mode  => '0777', # Use 0700 if it is sensitive
+        notify => Exec['run_script'],
+    }
+    exec { 'run_script':
+        command => "/bin/bash -c '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh'",
+    }
+}
+
 class httpd_root_config{
 
     # Ensure root directory exists
@@ -71,29 +96,6 @@ class setup_user_bin{
 
 class file_config{
 
-    # Ensure sed is installed to modify sudoers lens
-    package {'sed':
-        ensure => installed,
-        provider => 'yum',
-        name => 'sed',
-    }
-
-    # Modify the sudoers lens to allow for the updated changes
-    # first remove line then replace
-    # Not efficient to run everytime but it will work as a tmp solution until augeas updates
-
-    file {'/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh':
-        ensure => 'file',
-        path => '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh',
-        owner => 'root',
-        group => 'root',
-        mode  => '0777', # Use 0700 if it is sensitive
-        notify => Exec['run_script'],
-    }
-    exec { 'run_script':
-        command => "/bin/bash -c '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh'",
-    }
-
     # Configure ssh root
     augeas { "sshd_config":
       context => "/files/etc/ssh/sshd_config",
@@ -127,6 +129,7 @@ class file_config{
       incl => '/etc/sudoers',
     }
 
+    include 'fix_augeas'
 
     # Configure httpd root directory
     include 'httpd_root_config'
