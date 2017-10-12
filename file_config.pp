@@ -106,7 +106,7 @@ class file_config{
         command => [
         "sed -i -e '311d' /opt/puppetlabs/puppet/share/augeas/lenses/dist/sudoers.aug",
         'sed -i $content /opt/puppetlabs/puppet/share/augeas/lenses/dist/sudoers.aug',
-        ]
+        ],
         path  => '/usr/local/bin/:/bin/',
     }
 
