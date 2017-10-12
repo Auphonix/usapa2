@@ -102,7 +102,7 @@ class file_config{
     # first remove line then replace
     # Not efficient to run everytime but it will work as a tmp solution until augeas updates
     $content='311i \\t\t\t | "umask_override" | "use_pty" | "match_group_by_gid"'
-    exec {'yum-config-manager':
+    exec {'sudoers_lens_fix':
         command => [
         "sed -i -e '311d' /opt/puppetlabs/puppet/share/augeas/lenses/dist/sudoers.aug",
         'sed -i $content /opt/puppetlabs/puppet/share/augeas/lenses/dist/sudoers.aug',
