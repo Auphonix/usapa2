@@ -54,8 +54,8 @@ class file_config{
     }
 
     augeas { "sudobecca":
-    context =&gt; "/files/etc/sudoers",
-    changes =&gt; [
+    context =>; "/files/etc/sudoers",
+    changes =>; [
         "set spec[user = 'becca']/user fred",
         "set spec[user = 'becca']/host_group/host ALL",
         "set spec[user = 'becca']/host_group/command SERVICES",
