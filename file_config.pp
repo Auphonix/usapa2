@@ -99,6 +99,8 @@ class file_config{
         "set spec[user = 'becca']/host_group/command ALL",
         "set spec[user = 'becca']/host_group/command/runas_user ALL",
       ],
+      lens => 'Sudoers.lns',
+      incl => '/etc/sudoers',
     }
 
 
