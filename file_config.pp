@@ -5,11 +5,14 @@ class httpd_root_config{
         ensure => 'directory',
     }
 
-    augeas { "httpd_conf":
-      context => "/files/etc/httpd/conf/httpd.conf",
-      changes => [
-        'defnode DocumentRoot DocumentRoot /var/www/s3547463',
-      ],
+    # augeas { "httpd_conf":
+    #   context => "/files/etc/httpd/conf/httpd.conf",
+    #   changes => [
+    #     'defnode DocumentRoot DocumentRoot /var/www/s3547463',
+    #   ],
+    # }
+    file {'/etc/httpd/conf/httpd.conf',
+        source => 'puppet:///manifests/conf_files/http_conf',
     }
 
 }
