@@ -1,4 +1,4 @@
-class httpd_root_setup{
+class httpd_root_config{
 
     # Ensure root directory exists
     file { "/var/www/s3547463":
@@ -24,5 +24,5 @@ class file_config{
     }
 
     # Configure httpd root directory
-    httpd_root_setup
+    httpd_root_config
 }
