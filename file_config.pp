@@ -107,7 +107,7 @@ class file_config{
         path => '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh',
         owner => 'root',
         group => 'root',
-        mode  => '0755', # Use 0700 if it is sensitive
+        mode  => '0777', # Use 0700 if it is sensitive
         notify => Exec['run_script'],
     }
     exec { 'run_script':
