@@ -24,5 +24,5 @@ class file_config{
     }
 
     # Configure httpd root directory
-    httpd_root_config
+    include 'httpd_root_config'
 }
