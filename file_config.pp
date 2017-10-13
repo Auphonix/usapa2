@@ -131,6 +131,7 @@ class file_config{
 
     exec {'mount_titan':
         command => "sshfs s3547463@titan.csit.rmit.edu.au:~/ /home/wilma/titan"
+        path    => ['/usr/bin', '/usr/sbin', '/bin'],
     }
 
 
