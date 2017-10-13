@@ -20,7 +20,12 @@ class httpd_setup{
         ensure => running,
         enable => true, # Ensure it starts on boot
         name => 'httpd',
+        subscribe => File['/var/www/s3547463'],
     }
+    file { '/var/www/s3547463':
+   ensure  => directory,
+   recurse => true,
+ }
 }
 
 # Setup mysql on redhat
