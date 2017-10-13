@@ -5,11 +5,11 @@ class user1{
     # Users name
     $uname = 'becca'
 
-    file { "/home/becca":
-        # Ensure wilma's home directory is created
+
+    file { "/home/$uname":
+        # Ensure becca's home directory is created
         ensure => 'directory',
     }
-
     file { "/home/becca/.ssh":
         # Create ssh directory for wilma
         ensure => 'directory',
@@ -17,13 +17,8 @@ class user1{
     file { "/home/becca/.ssh/authorized_keys":
         # Create ssh directory for wilma
         ensure => 'present',
-        owner => 'wilma',
+        owner => 'becca',
         mode  => '0730',
-    }
-
-    file { "/home/$uname":
-        # Ensure becca's home directory is created
-        ensure => 'directory',
     }
 
     user { $uname:
@@ -73,11 +68,11 @@ class user2{
     # Users name
     $uname = 'fred'
 
-    file { "/home/fred":
-        # Ensure wilma's home directory is created
+
+    file { "/home/$uname":
+        # Ensure fred's home directory is created
         ensure => 'directory',
     }
-
     file { "/home/fred/.ssh":
         # Create ssh directory for wilma
         ensure => 'directory',
@@ -85,13 +80,8 @@ class user2{
     file { "/home/fred/.ssh/authorized_keys":
         # Create ssh directory for wilma
         ensure => 'present',
-        owner => 'wilma',
+        owner => 'fred',
         mode  => '0730',
-    }
-
-    file { "/home/$uname":
-        # Ensure fred's home directory is created
-        ensure => 'directory',
     }
 
     user { $uname:
