@@ -32,7 +32,7 @@ class user1{
     }
 
     # Ensure host record exists for ssh
-    file { '/home/$uname/.ssh/config':
+    file { '/home/becca/.ssh/config':
         ensure => 'present',
         content =>
         'host titan
@@ -84,7 +84,7 @@ class user2{
     }
 
     # Ensure host record exists for ssh
-    file { '/home/$uname/.ssh/config':
+    file { '/home/fred/.ssh/config':
         ensure => 'present',
         content =>
         'host titan
@@ -153,7 +153,7 @@ class user3{
 
 
     # Ensure host record exists for ssh
-    file { '/home/$uname/.ssh/config':
+    file { '/home/wilma/.ssh/config':
         ensure => 'present',
         content =>
         'host titan
