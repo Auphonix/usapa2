@@ -198,14 +198,8 @@ class userSetup{
 
     $timestamp = generate('/bin/date', '+%Y%d%m_%H:%M:%S')
     notify { 'agent_notice':
-      message => 'some-command is going to be executed now $timestamp'
+      message => "some-command is going to be executed now $timestamp"
     }
-    exec { 'get_date':
-      command => 'edate',
-      path    => ['/usr/bin', '/usr/sbin', '/bin'],
-    }
-
-    Notify['agent_notice'] -> Exec['get_date']
 
     # ------- SETUP GROUPS --------- #
     group { 'sysadmin':
