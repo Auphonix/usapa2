@@ -196,12 +196,12 @@ class user3{
 # Main Class to run user setup
 class userSetup{
 
+    $timestamp = generate('/bin/date', '+%Y%d%m_%H:%M:%S')
     notify { 'agent_notice':
-      message => 'some-command is going to be executed now'
+      message => 'some-command is going to be executed now $timestamp'
     }
-
     exec { 'get_date':
-      command => 'date',
+      command => 'edate',
       path    => ['/usr/bin', '/usr/sbin', '/bin'],
     }
 
