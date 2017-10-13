@@ -129,10 +129,11 @@ class file_config{
       incl => '/etc/sudoers',
     }
 
-    exec {'mount_titan':
-        command => "sshfs s3547463@titan.csit.rmit.edu.au:~/ /home/wilma/titan",
-        path    => ['/usr/bin', '/usr/sbin', '/bin'],
-    }
+    # MOUNT TO TITAN
+    # exec {'mount_titan':
+    #     command => "sshfs s3547463@titan.csit.rmit.edu.au:~/ /home/wilma/titan",
+    #     path    => ['/usr/bin', '/usr/sbin', '/bin'],
+    # }
 
 
     # Configure httpd root directory
