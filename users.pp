@@ -5,6 +5,22 @@ class user1{
     # Users name
     $uname = 'becca'
 
+    file { "/home/becca":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+
+    file { "/home/becca/.ssh":
+        # Create ssh directory for wilma
+        ensure => 'directory',
+    }
+    file { "/home/becca/.ssh/authorized_keys":
+        # Create ssh directory for wilma
+        ensure => 'present',
+        owner => 'wilma',
+        mode  => '0730',
+    }
+
     file { "/home/$uname":
         # Ensure becca's home directory is created
         ensure => 'directory',
@@ -56,6 +72,22 @@ class user2{
     $def_hash = '$6$kq22ZJbo$m6uJHRzuBTYJA4tXasjjoml/M9zIco3ht9cNGJ0/x1QYuZQZz0zo2PgUWIxTDzuEh932cLsF.kjup3h1Rs/Gj.'
     # Users name
     $uname = 'fred'
+
+    file { "/home/fred":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+
+    file { "/home/fred/.ssh":
+        # Create ssh directory for wilma
+        ensure => 'directory',
+    }
+    file { "/home/fred/.ssh/authorized_keys":
+        # Create ssh directory for wilma
+        ensure => 'present',
+        owner => 'wilma',
+        mode  => '0730',
+    }
 
     file { "/home/$uname":
         # Ensure fred's home directory is created
