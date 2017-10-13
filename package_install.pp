@@ -20,7 +20,7 @@ class httpd_setup{
         ensure => running,
         enable => true, # Ensure it starts on boot
         name => 'httpd',
-        subscribe => File['/var/www/s3547463'],
+        subscribe => File['/var/www/s3547463'], #Subscribe to directory
     }
 }
 

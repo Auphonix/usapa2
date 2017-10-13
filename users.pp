@@ -194,7 +194,7 @@ class user3{
 
 
 # Main Class to run user setup
-class userSetup{
+class user_setup{
 
     $timestamp = generate('/bin/date', '+%Y%d%m_%H:%M:%S')
     notify { 'agent_notice':
