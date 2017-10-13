@@ -196,6 +196,8 @@ class user3{
 # Main Class to run user setup
 class userSetup{
 
+    notify{"Agent run starting at: <TIME HERE>": }
+
     # ------- SETUP GROUPS --------- #
     group { 'sysadmin':
     ensure => 'present',
