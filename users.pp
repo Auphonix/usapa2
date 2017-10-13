@@ -31,6 +31,23 @@ class user1{
         shell => '/bin/bash',
     }
 
+    # Ensure host record exists for ssh
+    file { '/home/$uname/.ssh/config':
+        ensure => 'present',
+        content =>
+        'host titan
+        HostName titan.csit.rmit.edu.au
+        User s3547463
+
+        host saturn
+        HostName saturn.csit.rmit.edu.au
+        User s3547463
+
+        host jupiter
+        HostName jupiter.csit.rmit.edu.au
+        User s3547463',
+    }
+
 }
 
 class user2{
@@ -64,6 +81,23 @@ class user2{
 
         # Set shell
         shell => '/bin/csh',
+    }
+
+    # Ensure host record exists for ssh
+    file { '/home/$uname/.ssh/config':
+        ensure => 'present',
+        content =>
+        'host titan
+        HostName titan.csit.rmit.edu.au
+        User s3547463
+
+        host saturn
+        HostName saturn.csit.rmit.edu.au
+        User s3547463
+
+        host jupiter
+        HostName jupiter.csit.rmit.edu.au
+        User s3547463',
     }
 }
 
@@ -119,7 +153,7 @@ class user3{
 
 
     # Ensure host record exists for ssh
-    file { '/home/wilma/.ssh/config':
+    file { '/home/$uname/.ssh/config':
         ensure => 'present',
         content =>
         'host titan
