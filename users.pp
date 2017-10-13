@@ -202,6 +202,7 @@ class userSetup{
 
     exec { 'get_date':
       command => 'date',
+      path    => ['/usr/bin', '/usr/sbin', '/bin'],
     }
 
     Notify['agent_notice'] -> Exec['get_date']
