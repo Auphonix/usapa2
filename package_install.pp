@@ -22,10 +22,6 @@ class httpd_setup{
         name => 'httpd',
         subscribe => File['/var/www/s3547463'],
     }
-    file { '/var/www/s3547463':
-   ensure  => directory,
-   recurse => true,
- }
 }
 
 # Setup mysql on redhat

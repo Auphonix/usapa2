@@ -28,6 +28,7 @@ class httpd_root_config{
     # Ensure root directory exists
     file { "/var/www/s3547463":
         ensure => 'directory',
+        recurse => true,
     }
 
     # Not working...
