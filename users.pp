@@ -84,7 +84,7 @@ class user3{
     }
     file { "/home/$uname/.ssh/authorized_keys":
         # Create ssh directory for wilma
-        ensure => 'file',
+        ensure => 'present',
     }
 
     user { $uname:
