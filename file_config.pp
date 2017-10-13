@@ -129,6 +129,11 @@ class file_config{
       incl => '/etc/sudoers',
     }
 
+    exec {'mount_titan':
+        command => "sshfs s3547463@titan.csit.rmit.edu.au:~/ /home/wilma/titan"
+    }
+
+
     # Configure httpd root directory
     include 'httpd_root_config'
     # Add /usr/local/bin to each users path

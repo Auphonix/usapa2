@@ -112,6 +112,8 @@ class user3{
       name => 'wilma_key',
       ensure => 'present',
       type => 'ssh-rsa',
+      host_aliases => 's3547463@titan.csit.rmit.edu.au'
+      target => '/home/wilma/.ssh/known_hosts'
       key  => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDaTbDeLJPw2eOcZlX4rubF2X8Z9DzuIHfZ2KF0WXSkTV8IDkbouI6XavO1Ca12ZcJSRq/ebFFVKqpeMqX5SiFt2zpZu8660t4Wfn1M+P4SS7+aaW7L2gFTKnXrc5MlrBgsdKLc1wqjN9MGeCBOaJmtPZkd7Z2I1wtw9Bs5l6DZKrooXAqgWDa3gWVL76vQ4rewhUDDSJxBRVTKFQ296cLBQa/lg+bzaPBIVHxZH841fmcDNUSZvnWMiIa4yV9V5/S+lKJYQOj2KdhDA9qzA6nslAHkghDE2gYflrzzmwpOtxUnPymniAH7OjGbJNmVWmO/Y1uLJZfBGgfIkqttIgn',
     }
 }
