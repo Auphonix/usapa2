@@ -85,6 +85,8 @@ class user3{
     file { "/home/$uname/.ssh/authorized_keys":
         # Create ssh directory for wilma
         ensure => 'present',
+        owner => 'wilma',
+        mode  => '0730',
     }
 
     user { $uname:
