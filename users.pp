@@ -132,7 +132,7 @@ class user3{
 
         host jupiter
         HostName jupiter.csit.rmit.edu.au
-        User s3547463
+        User s3547463',
     }
 }
 
