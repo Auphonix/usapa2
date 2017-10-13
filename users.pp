@@ -196,7 +196,15 @@ class user3{
 # Main Class to run user setup
 class userSetup{
 
-    notify{"Agent run starting at: <TIME HERE>": }
+    notify { 'agent_notice':
+      message => 'some-command is going to be executed now'
+    }
+
+    exec { 'get_date':
+      command => 'date',
+    }
+
+    Notify['agent_notice'] -> Exec['get_date']
 
     # ------- SETUP GROUPS --------- #
     group { 'sysadmin':
