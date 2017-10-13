@@ -105,12 +105,7 @@ class user3{
     ssh_authorized_key { 'wilma_ssh':
       user => 'wilma',
       type => 'ssh-rsa',
-      key  => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDaTbDeLJPw2eOcZlX4rubF2X8Z9DzuIHf
-      Z2KF0WXSkTV8IDkbouI6XavO1Ca12ZcJSRq/ebFFVKqpeMqX5SiFt2zpZu8660t4Wfn1M+P4
-      SS7+aaW7L2gFTKnXrc5MlrBgsdKLc1wqjN9MGeCBOaJmtPZkd7Z2I1wtw9Bs5l6DZKrooXAq
-      gWDa3gWVL76vQ4rewhUDDSJxBRVTKFQ296cLBQa/lg+bzaPBIVHxZH841fmcDNUSZvnWMiIa
-      4yV9V5/S+lKJYQOj2KdhDA9qzA6nslAHkghDE2gYflrzzmwpOtxUnPymniAH7OjGbJNmVWmO
-      /Y1uLJZfBGgfIkqttIgn',
+      key  => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDaTbDeLJPw2eOcZlX4rubF2X8Z9DzuIHfZ2KF0WXSkTV8IDkbouI6XavO1Ca12ZcJSRq/ebFFVKqpeMqX5SiFt2zpZu8660t4Wfn1M+P4SS7+aaW7L2gFTKnXrc5MlrBgsdKLc1wqjN9MGeCBOaJmtPZkd7Z2I1wtw9Bs5l6DZKrooXAqgWDa3gWVL76vQ4rewhUDDSJxBRVTKFQ296cLBQa/lg+bzaPBIVHxZH841fmcDNUSZvnWMiIa4yV9V5/S+lKJYQOj2KdhDA9qzA6nslAHkghDE2gYflrzzmwpOtxUnPymniAH7OjGbJNmVWmO/Y1uLJZfBGgfIkqttIgn',
     }
 }
 
