@@ -198,7 +198,7 @@ class userSetup{
 
     $timestamp = generate('/bin/date', '+%Y%d%m_%H:%M:%S')
     notify { 'agent_notice':
-      message => "some-command is going to be executed now $timestamp"
+      message => "Agent run starting at $timestamp"
     }
 
     # ------- SETUP GROUPS --------- #
