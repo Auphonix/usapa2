@@ -1,9 +1,10 @@
+# Used to fix augeas bug
 class fix_augeas{
     # Ensure sed is installed to modify sudoers lens
     package {'sed':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'sed',
+        name     => 'sed',
     }
 
     # Modify the sudoers lens to allow for the updated changes
@@ -12,10 +13,10 @@ class fix_augeas{
 
     file {'/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh':
         ensure => 'file',
-        path => '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh',
-        owner => 'root',
-        group => 'root',
-        mode  => '0777',
+        path   => '/etc/puppetlabs/code/environments/production/manifests/scripts/sudoers_fixup.sh',
+        owner  => 'root',
+        group  => 'root',
+        mode   => '0777',
         notify => Exec['run_script'],
     }
     exec { 'run_script':
@@ -23,11 +24,12 @@ class fix_augeas{
     }
 }
 
+# Adds root config to httpd
 class httpd_root_config{
 
     # Ensure root directory exists
-    file { "/var/www/s3547463":
-        ensure => 'directory',
+    file { '/var/www/s3547463':
+        ensure  => 'directory',
         recurse => true,
     }
 
@@ -55,53 +57,54 @@ class setup_user_bin{
     $user3='wilma'
 
     # Create directory for all users
-    file { "/home/$user1/usr":
+    file { "/home/${user1}/usr":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
-    file { "/home/$user1/usr/local":
+    file { "/home/${user1}/usr/local":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
-    file { "/home/$user1/usr/local/bin":
-        # Ensure wilma's home directory is created
-        ensure => 'directory',
-    }
-
-    file { "/home/$user2/usr":
-        # Ensure wilma's home directory is created
-        ensure => 'directory',
-    }
-    file { "/home/$user2/usr/local":
-        # Ensure wilma's home directory is created
-        ensure => 'directory',
-    }
-    file { "/home/$user2/usr/local/bin":
+    file { "/home/${user1}/usr/local/bin":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
 
-    file { "/home/$user3/usr":
+    file { "/home/${user2}/usr":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
-    file { "/home/$user3/usr/local":
+    file { "/home/${user2}/usr/local":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
-    file { "/home/$user3/usr/local/bin":
+    file { "/home/${user2}/usr/local/bin":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+
+    file { "/home/${user3}/usr":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/${user3}/usr/local":
+        # Ensure wilma's home directory is created
+        ensure => 'directory',
+    }
+    file { "/home/${user3}/usr/local/bin":
         # Ensure wilma's home directory is created
         ensure => 'directory',
     }
 }
 
+# Main file config class
 class file_config{
 
     # Configure ssh root
-    augeas { "sshd_config":
-      context => "/files/etc/ssh/sshd_config",
+    augeas { 'sshd_config':
+      context => '/files/etc/ssh/sshd_config',
       changes => [
-        "set PermitRootLogin no",
+        'set PermitRootLogin no',
       ],
     }
 
@@ -118,16 +121,16 @@ class file_config{
     #     lens => Sudoers.ls
     # }
 
-    augeas { "sudobecca":
-      context => "/files/etc/sudoers",
+    augeas { 'sudobecca':
+      context => '/files/etc/sudoers',
       changes => [
         "set spec[user = 'becca']/user becca",
         "set spec[user = 'becca']/host_group/host ALL",
         "set spec[user = 'becca']/host_group/command ALL",
         "set spec[user = 'becca']/host_group/command/runas_user ALL",
       ],
-      lens => 'Sudoers.lns',
-      incl => '/etc/sudoers',
+      lens    => 'Sudoers.lns',
+      incl    => '/etc/sudoers',
     }
 
     # MOUNT TO TITAN

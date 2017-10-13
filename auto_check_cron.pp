@@ -1,6 +1,7 @@
 
 # Terminal command
-#puppet resource cron puppet-agent ensure=present user=root minute=*/20 command='/opt/puppetlabs/bin/puppet agent --onetime --no-daemonize --splay --splaylimit 60'
+#puppet resource cron puppet-agent ensure=present user=root minute=*/20
+#command='/opt/puppetlabs/bin/puppet agent --onetime --no-daemonize --splay --splaylimit 60'
 
 cron { 'puppet-agent':
   ensure  => 'present',

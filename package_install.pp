@@ -1,25 +1,27 @@
 # Enable the extra/optional repo channels for yum
 class add_repo {
     exec {'yum-config-manager':
-        command => 'yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional rhui-REGION-rhel-server-updates',
+        command =>
+        'yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional rhui-REGION-rhel-server-updates',
         path    => '/usr/local/bin/:/bin/',
     }
 }
 
+# Setup httpd
 class httpd_setup{
 
     # Install a package
     package {'httpd':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'httpd',
+        name     => 'httpd',
     }
 
     # Start the service
     service {'httpd':
-        ensure => running,
-        enable => true, # Ensure it starts on boot
-        name => 'httpd',
+        ensure    => running,
+        enable    => true, # Ensure it starts on boot
+        name      => 'httpd',
         subscribe => File['/var/www/s3547463'], #Subscribe to directory
     }
 }
@@ -28,134 +30,138 @@ class httpd_setup{
 class mysql_setup {
 
     package {'mysql57-community-release-el7-9.noarch':
-    ensure => installed,
+    ensure   => installed,
     provider => rpm,
-    source => 'https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm',
+    source   => 'https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm',
     }
 
     package {'mysql-server':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'mysql-server',
+        name     => 'mysql-server',
     }
 
     package {'mysql':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'mysql',
+        name     => 'mysql',
     }
 
     # Start the service
     service {'mysqld':
-        ensure => running,
-        enable => true, # Ensure it starts on boot
-        require => Package["mysql-server"],
+        ensure  => running,
+        enable  => true, # Ensure it starts on boot
+        require => Package['mysql-server'],
 
     }
 }
 
+# Setup vnc
 class vnc_setup {
 
     # ============ VNC REQUIRED PACKAGES ========== #
     package {'pixman':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'pixman',
+        name     => 'pixman',
     }
 
     package {'pixman-devel':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'pixman-devel',
+        name     => 'pixman-devel',
     }
 
     # =========== VNC PACKAGE ============== #
 
     package {'vnc-server':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'vnc-server',
+        name     => 'vnc-server',
     }
 
     package {'xorg-x11-fonts-Type1':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'xorg-x11-fonts-Type1',
+        name     => 'xorg-x11-fonts-Type1',
     }
 }
 
+# Class to setup sshfs
 class sshfs_setup {
     package {'fuse':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'fuse',
+        name     => 'fuse',
     }
 
     package {'fuse-devel':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'fuse-devel',
+        name     => 'fuse-devel',
     }
 
     package {'fuse-sshfs':
-        ensure => installed,
-        source => 'ftp://195.220.108.108/linux/fedora/linux/releases/26/Everything/x86_64/os/Packages/f/fuse-sshfs-2.8-2.fc26.x86_64.rpm',
+        ensure   => installed,
+        source   => 'ftp://195.220.108.108/linux/fedora/linux/releases/26/Everything/x86_64/os/Packages/f/fuse-sshfs-2.8-2.fc26.x86_64.rpm',
         provider => 'rpm',
-        name => 'fuse-sshfs',
+        name     => 'fuse-sshfs',
     }
 }
 
+# Install static packages (e.g. no services)
 class static_package_setup{
     package {'openssh':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'openssh',
+        name     => 'openssh',
     }
 
     package {'tmux':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'tmux',
+        name     => 'tmux',
     }
 
     package {'lynx':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'lynx',
+        name     => 'lynx',
     }
 
     package {'gcc':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'gcc',
+        name     => 'gcc',
     }
 
     package {'gdb':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'gdb',
+        name     => 'gdb',
     }
 
     package {'cgdb-0.6.8-1.el7.x86_64':
-        ensure => installed,
-        source => 'http://dl.fedoraproject.org/pub/epel/7/x86_64/c/cgdb-0.6.8-1.el7.x86_64.rpm',
+        ensure   => installed,
+        source   => 'http://dl.fedoraproject.org/pub/epel/7/x86_64/c/cgdb-0.6.8-1.el7.x86_64.rpm',
         provider => 'rpm',
-        name => 'cgdb',
+        name     => 'cgdb',
     }
 
     package {'vim':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'vim',
+        name     => 'vim',
     }
 
     package {'emacs':
-        ensure => installed,
+        ensure   => installed,
         provider => 'yum',
-        name => 'emacs',
+        name     => 'emacs',
     }
 }
 
+# The main package install class
 class package_install{
     include 'add_repo'
     include 'httpd_setup'
